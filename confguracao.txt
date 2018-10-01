@@ -1,0 +1,23 @@
+Corrigir o problema da Aula 102 Slim rota /admin foi necessário realizar o seguinte procedimento:
+
+ 1. adicionar ao arquivo vim /etc/apache2/sites-enabled/000-default.conf a seguinte linha:
+	AllowOverride all
+
+O virtual hosts do projeto ficou da seguinte forma:
+
+<VirtualHost *:80>
+    ServerAdmin webmaster@hcode.com.br
+    DocumentRoot /var/www/html/ecommerce
+    ServerName www.hcodecommerce.com.br
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+    <Directory "/var/www/html/ecommerce">
+        AllowOverride all
+         
+    </Directory>
+</VirtualHost>
+
+2. Foi preciso dar permissão de escrita para o diretório 
+
+chmod 775 views-cache
